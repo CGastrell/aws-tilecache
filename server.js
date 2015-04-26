@@ -25,7 +25,7 @@ var ignTiles = {
   clearRoute: "/clear"
 }
 
-app.use('/', tilecache(ignTiles));
+app.use('/ign', tilecache(ignTiles));
 
 app.use(pmx.expressErrorHandler());
 
