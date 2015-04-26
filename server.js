@@ -19,6 +19,7 @@ var ignTiles = {
   }),
   store: redisStore({
     port: 6379,
+    ttl: 3 * 60,
     host: "tile-cache-redis.vcmzdd.0001.usw2.cache.amazonaws.com"
   }),
   enableInfo: true,
