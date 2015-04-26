@@ -27,6 +27,31 @@ var ignTiles = {
 
 app.use('/ign', tilecache(ignTiles));
 
+
+//osm
+var osm = {
+  tilesource: {
+    urlTemplate: 'http://{s}.tile.openstreetmap.org',
+    subdomains: "abc".split(""),
+    getTilePath: function(params) {
+      var ymax = 1 << params.z;
+      var y = ymax - params.y - 1;
+      return [params.z, params.x, y + ".png"].join("/");
+    }
+  },
+  storage: s3storage({
+    accessKeyId: config.keyId,
+    secretAccessKey: config.secret,
+    region: "us-west-2",
+    bucket: "express-tilecache"
+  }),
+  store: redisStore({
+    port: 6379,
+    host: "tile-cache-redis.vcmzdd.0001.usw2.cache.amazonaws.com"
+  })
+}
+app.use("/osm", tilecache(osm));
+
 app.use(pmx.expressErrorHandler());
 
 app.listen(process.env.PORT || 3000);
