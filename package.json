@@ -1,0 +1,16 @@
+{
+  "name": "tilecache",
+  "version": "1.0.0",
+  "description": "tile cache for tms services",
+  "main": "server.js",
+  "dependencies": {
+    "express-tile-cache": "^1.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
