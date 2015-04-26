@@ -7,12 +7,13 @@ app = express();
 var tilecache = require('express-tile-cache');
 var s3storage = require("s3-tile-storage");
 var redisStore = require("redis-tile-store");
+var config = require('./config.json');
 
 var ignTiles = {
   urlTemplate: 'http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0',
   storage: s3storage({
-    accessKeyId: "AKIAILWW6I2PSK3AOG3A",
-    secretAccessKey: "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",
+    accessKeyId: config.keyId,
+    secretAccessKey: config.secret,
     region: "us-west-2",
     bucket: "express-tilecache"
   }),
