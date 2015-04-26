@@ -1,3 +1,6 @@
+var pmx = require('pmx');
+pmx.init();
+
 var express = require('express');
 app = express();
 
@@ -8,6 +11,8 @@ var capabaseargenmap = {
   cachepath: 'cache'
 }
 
-app.use('/baseargenmap', tilecache(capabaseargenmap));
+app.use('/', tilecache(capabaseargenmap));
+
+app.use(pmx.expressErrorHandler());
 
 app.listen(process.env.PORT || 3000);
