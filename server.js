@@ -20,6 +20,7 @@ var ignTiles = {
   store: redisStore({
     port: 6379,
     ttl: 3 * 60,
+    prefix: "ign",
     host: "tile-cache-redis.vcmzdd.0001.usw2.cache.amazonaws.com"
   }),
   enableInfo: true,
@@ -48,7 +49,8 @@ var osm = {
   }),
   store: redisStore({
     port: 6379,
-    host: "tile-cache-redis.vcmzdd.0001.usw2.cache.amazonaws.com"
+    host: "tile-cache-redis.vcmzdd.0001.usw2.cache.amazonaws.com",
+    prefix: "osm"
   })
 }
 app.use("/osm", tilecache(osm));
